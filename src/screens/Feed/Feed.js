@@ -1,12 +1,21 @@
 import React, { Component } from "react";
+import { createStackNavigator } from "react-navigation";
 import { Text, View } from "react-native";
+import Photo from "../Photo";
 
-export default class Feed extends Component {
+class News extends Component {
   render() {
     return (
       <View>
-        <Text>Feed</Text>
+        <Text>News</Text>
       </View>
     );
   }
 }
+
+const Feed = createStackNavigator({
+  News,
+  Photo
+});
+
+export default Feed;

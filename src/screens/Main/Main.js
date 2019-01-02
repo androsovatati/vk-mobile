@@ -32,6 +32,7 @@ const Main = createBottomTabNavigator(
     Profile
   },
   {
+    initialRouteName: "Feed",
     tabBarOptions: {
       showLabel: false,
       activeTintColor: BLUE,
