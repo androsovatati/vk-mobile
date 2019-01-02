@@ -1,25 +1,8 @@
-import React, { Component } from "react";
-import { Text, View } from "react-native";
-import {
-  createSwitchNavigator,
-  createBottomTabNavigator,
-  createAppContainer
-} from "react-navigation";
+import React from "react";
+import { createSwitchNavigator, createAppContainer } from "react-navigation";
 import Initial from "./screens/Initial";
 import Login from "./screens/Login";
-import Feed from "./screens/Feed";
-import Search from "./screens/Search";
-import Messages from "./screens/Messages";
-import Notifications from "./screens/Notifications";
-import Profile from "./screens/Profile";
-
-const Main = createBottomTabNavigator({
-  Feed,
-  Search,
-  Messages,
-  Notifications,
-  Profile
-});
+import Main from "./screens/Main";
 
 const AppNavigator = createSwitchNavigator(
   {
