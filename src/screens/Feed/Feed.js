@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import FeedHeader from "./FeedHeader";
+import { Container } from "./Feed.styles";
+import Stories from "../../components/Stories";
 import { Text, View } from "react-native";
 
 class Feed extends Component {
@@ -9,10 +11,11 @@ class Feed extends Component {
 
   render() {
     return (
-      <View>
+      <Container>
         <FeedHeader navigation={this.props.navigation} />
+        <Stories />
         <Text>News</Text>
-      </View>
+      </Container>
     );
   }
 }
