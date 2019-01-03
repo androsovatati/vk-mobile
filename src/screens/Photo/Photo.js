@@ -3,11 +3,6 @@ import { RNCamera } from "react-native-camera";
 import { Container, Camera } from "./Photo.styled";
 
 class Photo extends Component {
-  static navigationOptions = {
-    header: null,
-    tabBarVisible: false
-  };
-
   render() {
     return (
       <Container>
