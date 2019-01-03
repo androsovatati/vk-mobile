@@ -1,12 +1,27 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import LoginHeader from "./LoginHeader";
+import Input from "../../components/Input";
+import { Container, LoginForm, Divider } from "./Login.styles";
 
 export default class Login extends Component {
   render() {
     return (
-      <View>
-        <Text>Login</Text>
-      </View>
+      <Container>
+        <LoginHeader />
+        <LoginForm>
+          <Input
+            textContentType={"emailAddress"}
+            keyboardType={"email-address"}
+            placeholder="Почта или телефон"
+          />
+          <Divider />
+          <Input
+            textContentType={"password"}
+            secureTextEntry={true}
+            placeholder="Пароль"
+          />
+        </LoginForm>
+      </Container>
     );
   }
 }
