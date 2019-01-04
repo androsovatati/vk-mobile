@@ -18,7 +18,7 @@ export default class Initial extends Component {
   render() {
     return (
       <InitialScreen>
-        <Icon name="vk" size={100} color={DARK_BLUE} />
+        {/* <Icon name="vk" size={100} color={DARK_BLUE} /> */}
       </InitialScreen>
     );
   }

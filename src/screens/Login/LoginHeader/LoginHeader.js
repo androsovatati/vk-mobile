@@ -20,7 +20,10 @@ class FeedHeader extends Component {
         <Logo>
           <Icon name="vk" size={40} color={DARK_BLUE} />
         </Logo>
-        <LogoutButton disabled={true}>
+        <LogoutButton
+          disabled={this.props.disabledLogin}
+          onPress={this.props.onLogin}
+        >
           <LogoutButtonText>Войти</LogoutButtonText>
         </LogoutButton>
       </Container>

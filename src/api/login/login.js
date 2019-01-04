@@ -16,5 +16,12 @@ export const login = ({ username, password }) => {
   );
   return axios
     .get("https://oauth.vk.com/token", { params })
-    .then(response => camelCaseKeys(response.data));
+    .then(response => camelCaseKeys(response.data))
+    .catch(error => {
+      if (error.response && error.response.data) {
+        throw camelCaseKeys(error.response.data, { deep: true });
+      } else {
+        throw error;
+      }
+    });
 };
