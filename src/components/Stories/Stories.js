@@ -1,18 +1,27 @@
 import React, { Component } from "react";
 import { Wrapper, StoriesList, StoriesItem } from "./Stories.styles";
-import { getStories } from "../../api/stories";
+import Store from "../../store";
+import { observer } from "mobx-react";
+import { observable, computed } from "mobx";
 
+@observer
 class Stories extends Component {
-  render() {
-    const arr = Array.from(Array(20)).map((_, index) => ({
-      key: index.toString()
-    }));
+  componentDidMount() {
+    Store.getStories();
+  }
 
+  get storiesOwners() {
+    return Store.stories.map(userStories => ({
+      ...userStories[0]
+    }));
+  }
+
+  render() {
     return (
       <Wrapper>
         <StoriesList
           horizontal={true}
-          data={arr}
+          data={this.storiesOwners.map((item, i) => ({ ...item, key: `${i}` }))}
           renderItem={() => <StoriesItem />}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ alignSelf: "center" }}

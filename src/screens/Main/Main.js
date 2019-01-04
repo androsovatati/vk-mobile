@@ -50,19 +50,19 @@ const Main = createMaterialTopTabNavigator(
     Photo: {
       screen: PhotoScreen
     },
-    Main: {
+    Base: {
       screen: BottomNavigation
     }
   },
   {
-    initialRouteName: "Main",
+    initialRouteName: "Base",
     tabBarOptions: {
       style: {
         display: "none"
       }
     },
     swipeEnabled: ({ routes }) => {
-      const MainRoute = routes.find(route => route.routeName === "Main");
+      const MainRoute = routes.find(route => route.routeName === "Base");
       return MainRoute.index === 0;
     }
   }
