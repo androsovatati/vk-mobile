@@ -19,9 +19,10 @@ class Stories extends Component {
     // AsyncStorage.removeItem("accessToken");
   }
 
-  get storiesOwners() {
-    return Store.stories.map(userStories => ({
-      ...userStories[0]
+  get storiesList() {
+    return Store.storiesPreview.map((item, i) => ({
+      ...item,
+      key: `${i}`
     }));
   }
 
@@ -30,10 +31,7 @@ class Stories extends Component {
       <Wrapper>
         <StoriesList
           horizontal={true}
-          data={Store.storiesPreview.map((item, i) => ({
-            ...item,
-            key: `${i}`
-          }))}
+          data={this.storiesList}
           renderItem={({ item }) => (
             <StoriesItem
               image={item.photo100}
