@@ -4,7 +4,7 @@ export const Wrapper = styled.View`
   flex-grow: 0;
   margin-top: 10px;
   padding: 0 5px;
-  height: 80px;
+  height: 100px;
   background-color: white;
 `;
 
