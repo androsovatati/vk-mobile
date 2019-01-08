@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Wrapper, AddPost, AddPostText, Button } from "./NewPost.styles";
 import UserPlaceholder from "../UserPlaceholder";
-import Icon from "react-native-vector-icons/FontAwesome5";
 import { GRAY } from "../../constants/colors";
 import Store from "../../store/Store";
 import { observer } from "mobx-react";
 import { observable, computed } from "mobx";
+import LiveIcon from "../../components/Icons/LiveIcon";
+import GalleryIcon from "../../components/Icons/GalleryIcon";
 
 @observer
 class NewPost extends Component {
@@ -17,10 +18,10 @@ class NewPost extends Component {
           <AddPostText>Что у Вас нового?</AddPostText>
         </AddPost>
         <Button>
-          <Icon name="image" size={25} color={GRAY} />
+          <GalleryIcon color={GRAY} />
         </Button>
         <Button>
-          <Icon name="dot-circle" size={22} color={GRAY} />
+          <LiveIcon color={GRAY} />
         </Button>
       </Wrapper>
     );

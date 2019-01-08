@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Container, Menu, Title, IconWrapper } from "./FeedHeader.styles";
 import { TouchableOpacity } from "react-native";
 import Header from "../../../components/Header";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import StoryIcon from "../../../components/Icons/StoryIcon";
+import DropdownIcon from "../../../components/Icons/DropdownIcon";
 
 class FeedHeader extends Component {
   goToPhoto = () => {
@@ -13,12 +14,12 @@ class FeedHeader extends Component {
     return (
       <Container>
         <TouchableOpacity onPress={this.goToPhoto}>
-          <Icon name="camera" size={20} color="white" />
+          <StoryIcon color="white" />
         </TouchableOpacity>
         <Menu>
           <Title>Новости</Title>
           <IconWrapper>
-            <Icon name="chevron-down" size={15} color="white" regular />
+            <DropdownIcon width={18} height={18} color="white" />
           </IconWrapper>
         </Menu>
       </Container>

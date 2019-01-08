@@ -19,6 +19,6 @@ export const Title = styled.Text`
 `;
 
 export const IconWrapper = styled.View`
-  margin-left: 7px;
+  margin-left: 3px;
   margin-top: 3px;
 `;

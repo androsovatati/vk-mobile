@@ -10,7 +10,7 @@ import {
   ForgetPassword
 } from "./Login.styles";
 import Store from "../../store";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import ClearIcon from "../../components/Icons/ClearIcon";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
 import { GRAY } from "../../constants/colors";
@@ -61,7 +61,7 @@ export default class Login extends Component {
         <LoginForm>
           {!!this.errorMessage && (
             <ErrorContainer>
-              <Icon name="times-circle" size={25} color={GRAY} solid />
+              <ClearIcon color={GRAY} />
               <ErrorMessage>{this.errorMessage}</ErrorMessage>
             </ErrorContainer>
           )}

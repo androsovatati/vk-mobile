@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import { LIGHT_BLUE, DARK_BLUE } from "../../constants/colors";
+import { LIGHT_BLUE } from "../../constants/colors";
 
 export const Container = styled.View`
   justify-content: center;
@@ -11,7 +10,8 @@ export const Container = styled.View`
   background-color: ${LIGHT_BLUE};
 `;
 
-export const User = styled(Icon)`
-  color: ${DARK_BLUE};
+export const User = styled.View`
+  width: ${props => props.iconSize};
+  height: ${props => props.iconSize};
   opacity: 0.3;
 `;

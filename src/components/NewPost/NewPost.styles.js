@@ -25,5 +25,5 @@ export const AddPostText = styled.Text`
 `;
 
 export const Button = styled.TouchableOpacity`
-  margin-left: 10px;
+  margin-left: 15px;
 `;

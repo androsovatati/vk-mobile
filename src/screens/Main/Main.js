@@ -9,23 +9,27 @@ import MessagesScreen from "../Messages";
 import NotificationsScreen from "../Notifications";
 import ProfileScreen from "../Profile";
 import PhotoScreen from "../Photo";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import SearchIcon from "../../components/Icons/SearchIcon";
+import MessagesIcon from "../../components/Icons/MessagesIcon";
+import NotificationsIcon from "../../components/Icons/NotificationsIcon";
+import MenuIcon from "../../components/Icons/MenuIcon";
+import NewsfeedIcon from "../../components/Icons/NewsfeedIcon";
 import { GRAY, BLUE } from "../../constants/colors";
 
-const createTab = (screen, iconName) => ({
+const createTab = (screen, Icon) => ({
   screen,
   navigationOptions: () => ({
     tabBarIcon: ({ tintColor }) => (
-      <Icon name={iconName} size={30} color={tintColor} regular />
+      <Icon color={tintColor} width={32} height={32} />
     )
   })
 });
 
-const Feed = createTab(FeedScreen, "square");
-const Search = createTab(SearchScreen, "search");
-const Messages = createTab(MessagesScreen, "comment");
-const Notifications = createTab(NotificationsScreen, "bell");
-const Profile = createTab(ProfileScreen, "bars");
+const Feed = createTab(FeedScreen, NewsfeedIcon);
+const Search = createTab(SearchScreen, SearchIcon);
+const Messages = createTab(MessagesScreen, MessagesIcon);
+const Notifications = createTab(NotificationsScreen, NotificationsIcon);
+const Profile = createTab(ProfileScreen, MenuIcon);
 
 const BottomNavigation = createBottomTabNavigator(
   {

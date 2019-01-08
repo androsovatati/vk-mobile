@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { AsyncStorage } from "react-native";
 import { InitialScreen } from "./Initial.styles";
-import { DARK_BLUE } from "../../constants/colors";
-import Icon from "react-native-vector-icons/FontAwesome5";
 
 export default class Initial extends Component {
   componentDidMount() {
@@ -16,10 +14,6 @@ export default class Initial extends Component {
   };
 
   render() {
-    return (
-      <InitialScreen>
-        {/* <Icon name="vk" size={100} color={DARK_BLUE} /> */}
-      </InitialScreen>
-    );
+    return <InitialScreen />;
   }
 }

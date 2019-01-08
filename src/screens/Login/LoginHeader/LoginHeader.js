@@ -7,7 +7,7 @@ import {
 } from "./LoginHeader.styles";
 import { DARK_BLUE } from "../../../constants/colors";
 import Header from "../../../components/Header/Header";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import VkIcon from "../../../components/Icons/VkIcon";
 
 class FeedHeader extends Component {
   goToPhoto = () => {
@@ -18,7 +18,7 @@ class FeedHeader extends Component {
     return (
       <Container>
         <Logo>
-          <Icon name="vk" size={40} color={DARK_BLUE} />
+          <VkIcon width={40} height={40} color={DARK_BLUE} />
         </Logo>
         <LogoutButton
           disabled={this.props.disabledLogin}
