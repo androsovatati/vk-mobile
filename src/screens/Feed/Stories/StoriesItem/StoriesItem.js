@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, ImageWrapper, Image, Text } from "./StoriesItem.styled";
-import UserPlaceholder from "../../../components/UserPlaceholder";
+import UserPlaceholder from "../../../../components/UserPlaceholder";
 
 const StoriesItem = props => (
   <Container>

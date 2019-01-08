@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Wrapper, AddPost, AddPostText, Button } from "./NewPost.styles";
-import UserPlaceholder from "../UserPlaceholder";
-import { GRAY } from "../../constants/colors";
-import Store from "../../store/Store";
+import UserPlaceholder from "../../../components/UserPlaceholder";
+import { GRAY } from "../../../constants/colors";
+import Store from "../../../store";
 import { observer } from "mobx-react";
 import { observable, computed } from "mobx";
-import LiveIcon from "../../components/Icons/LiveIcon";
-import GalleryIcon from "../../components/Icons/GalleryIcon";
+import LiveIcon from "../../../components/Icons/LiveIcon";
+import GalleryIcon from "../../../components/Icons/GalleryIcon";
 
 @observer
 class NewPost extends Component {

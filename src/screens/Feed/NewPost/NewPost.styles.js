@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GRAY } from "../../constants/colors";
+import { GRAY } from "../../../constants/colors";
 
 export const Wrapper = styled.View`
   flex-direction: row;

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { LIGHT_BLUE, BLUE } from "../../../constants/colors";
+import { LIGHT_BLUE, BLUE } from "../../../../constants/colors";
 
 export const Container = styled.View`
   align-items: center;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Wrapper, StoriesList } from "./Stories.styles";
-import Store from "../../store";
+import Store from "../../../store";
 import StoriesItem from "./StoriesItem";
 import { View, Text } from "react-native";
 import { observer } from "mobx-react";

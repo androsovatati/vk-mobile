@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import FeedHeader from "./FeedHeader";
 import { Container } from "./Feed.styles";
-import Stories from "../../components/Stories";
-import NewPost from "../../components/NewPost";
+import Stories from "./Stories";
+import NewPost from "./NewPost";
 import { fetchNewsFeed } from "../../api/newsfeed";
+import FeedPost from "./FeedPost";
 import { Text, View, FlatList } from "react-native";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
@@ -34,7 +35,7 @@ class Feed extends Component {
         <Stories />
         <FlatList
           data={this.news}
-          renderItem={({ item }) => <Text>{item.text}</Text>}
+          renderItem={({ item }) => <FeedPost item={item} />}
           contentContainerStyle={{ alignSelf: "center" }}
         />
       </Container>
