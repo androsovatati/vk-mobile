@@ -11,7 +11,7 @@ export const login = ({ username, password }) => {
       grantType: "password",
       clientId: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
-      scope: 66
+      scope: 8258
     },
     { deep: true }
   );
