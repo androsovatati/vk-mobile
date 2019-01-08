@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
 
+export const TextContent = styled.Text`
+  padding: 0 10px 10px 10px;
+`;
+
 export const Footer = styled.View`
   flex-direction: row;
   align-items: center;

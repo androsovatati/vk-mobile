@@ -1,26 +1,21 @@
 import React from "react";
-import { Text } from "react-native";
 import Panel from "../../../components/Panel";
 import LikeControl from "../../../components/LikeControl";
 import CommentsControl from "../../../components/CommentsControl";
 import RepostControl from "../../../components/RepostControl";
 import ViewControl from "../../../components/ViewControl";
-import { Footer, FooterItem } from "./FeedPost.styles";
+import { TextContent, Footer, FooterItem } from "./FeedPost.styles";
 
 const FeedPost = props => (
   <Panel>
-    <Text>{props.item.text}</Text>
+    <TextContent>{props.item.text}</TextContent>
     <Footer>
-      {!!props.item.likes.canLike && (
-        <FooterItem>
-          <LikeControl {...props.item.likes} />
-        </FooterItem>
-      )}
-      {!!props.item.comments.canPost && (
-        <FooterItem>
-          <CommentsControl count={props.item.comments.count} />
-        </FooterItem>
-      )}
+      <FooterItem>
+        <LikeControl {...props.item.likes} />
+      </FooterItem>
+      <FooterItem>
+        <CommentsControl count={props.item.comments.count} />
+      </FooterItem>
       <FooterItem>
         <RepostControl {...props.item.reposts} />
       </FooterItem>

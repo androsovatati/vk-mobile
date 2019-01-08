@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import FeedHeader from "./FeedHeader";
-import { Container } from "./Feed.styles";
+import { Container, FeedListHeader } from "./Feed.styles";
 import Stories from "./Stories";
 import NewPost from "./NewPost";
 import { fetchNewsFeed } from "../../api/newsfeed";
@@ -31,12 +31,15 @@ class Feed extends Component {
     return (
       <Container>
         <FeedHeader navigation={this.props.navigation} />
-        <NewPost />
-        <Stories />
         <FlatList
           data={this.news}
+          ListHeaderComponent={
+            <FeedListHeader>
+              <NewPost />
+              <Stories />
+            </FeedListHeader>
+          }
           renderItem={({ item }) => <FeedPost item={item} />}
-          contentContainerStyle={{ alignSelf: "center" }}
         />
       </Container>
     );
