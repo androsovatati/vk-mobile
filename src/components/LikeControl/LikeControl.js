@@ -11,7 +11,7 @@ const LikeControl = props => (
     ) : (
       <LikeOutlineIcon color={GRAY} />
     )}
-    <Count active={props.userLikes}>{props.count}</Count>
+    {!!props.count && <Count active={props.userLikes}>{props.count}</Count>}
   </Container>
 );
 
