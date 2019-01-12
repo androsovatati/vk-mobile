@@ -9,16 +9,12 @@ import { observable, computed } from "mobx";
 
 @observer
 class Stories extends Component {
-  test = async () => {
-    const resp = await Store.getStories();
-    console.log("stories", Store.storiesPreview.slice());
-  };
   componentDidMount() {
-    this.test();
-    // Store.getStories();
+    Store.getStories();
     // AsyncStorage.removeItem("accessToken");
   }
 
+  @computed
   get storiesList() {
     return Store.storiesPreview.map((item, i) => ({
       ...item,

@@ -43,6 +43,7 @@ export default class Login extends Component {
         this.props.navigation.navigate("Main");
       }
     } catch (error) {
+      console.log(error);
       if (error.description) {
         this.errorMessage = error.description;
       } else {
