@@ -38,6 +38,10 @@ class FeedPost extends PureComponent {
     moment.locale("ru");
   }
 
+  onChooseAction = index => {
+    console.log(index);
+  };
+
   showActionSheet = () => {
     this.ActionSheet.show();
   };
@@ -70,6 +74,7 @@ class FeedPost extends PureComponent {
           ref={o => (this.ActionSheet = o)}
           options={BUTTONS}
           cancelButtonIndex={CANCEL_INDEX}
+          onPress={this.onChooseAction}
         />
         <TextContent>{item.text}</TextContent>
         <Footer>
