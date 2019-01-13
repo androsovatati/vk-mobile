@@ -22,7 +22,11 @@ git clone https://github.com/androsovatati/vk-mobile.git
 npm i
 yarn install
 ```
-4. In root create file `keys.js` with 2 exported constants: `CLIENT_ID` and `CLIENT_SECRET` with your own values.  
+4. Create a new file .env in the root of this React Native app and define 2 constants: `CLIENT_ID` and `CLIENT_SECRET` with your own values:
+```
+CLIENT_ID=1234567
+CLIENT_SECRET=aBCdEfgHIGkL
+```
 5. Finally, connect your device or run simulator and run one of these commands for Android or iOS accordingly:
 ```
 react-native run-android
