@@ -3,7 +3,7 @@ import { AsyncStorage } from "react-native";
 import { Profile } from "./models/Profile";
 import { Group } from "./models/Group";
 import { Story } from "./models/Story";
-import { Post } from "./models/Post";
+import { Newsfeed } from "./models/Newsfeed";
 import { login } from "../api/login";
 import { fetchStories } from "../api/stories";
 import { fetchUsers } from "../api/users";
@@ -13,7 +13,7 @@ const Store = types
   .model({
     user: types.maybe(Profile),
     stories: types.array(types.array(Story)),
-    newsfeed: types.array(Post),
+    newsfeed: types.maybe(Newsfeed),
     profiles: types.map(Profile),
     groups: types.map(Group)
   })
@@ -36,7 +36,17 @@ const Store = types
     }),
     getNewsFeed: flow(function*() {
       const newsfeed = yield fetchNewsFeed();
-      self.newsfeed = newsfeed.items;
+      self.newsfeed = {
+        items: newsfeed.items,
+        nextFrom: newsfeed.nextFrom
+      };
+      self.setProfiles(newsfeed.profiles);
+      self.setGroups(newsfeed.groups);
+    }),
+    getMoreNewsFeed: flow(function*() {
+      const newsfeed = yield fetchNewsFeed(self.newsfeed.nextFrom);
+      self.newsfeed.items.push(...newsfeed.items);
+      self.newsfeed.nextFrom = newsfeed.nextFrom;
       self.setProfiles(newsfeed.profiles);
       self.setGroups(newsfeed.groups);
     }),
@@ -76,7 +86,10 @@ const Store = types
       });
     },
     get postsData() {
-      return self.newsfeed.map(post => {
+      if (!self.newsfeed) {
+        return [];
+      }
+      return self.newsfeed.items.map(post => {
         return post.sourceId > 0
           ? { ...post, source: self.profiles.get(post.sourceId) }
           : { ...post, source: self.groups.get(-post.sourceId) };

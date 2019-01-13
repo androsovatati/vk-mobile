@@ -5,7 +5,7 @@ import { Container, FeedListHeader } from "./Feed.styles";
 import Stories from "./Stories";
 import NewPost from "./NewPost";
 import FeedPost from "./FeedPost";
-import { Text, View, FlatList } from "react-native";
+import { FlatList } from "react-native";
 import { observable, computed } from "mobx";
 import { observer } from "mobx-react";
 
@@ -23,7 +23,6 @@ class Feed extends Component {
 
   @computed
   get news() {
-    console.log("d", Store.postsData.slice());
     return Store.postsData.map((item, i) => ({ ...item, key: `${i}` }));
   }
 
@@ -34,7 +33,7 @@ class Feed extends Component {
   };
 
   fetchMore = () => {
-    console.log("more");
+    Store.getMoreNewsFeed();
   };
 
   render() {
