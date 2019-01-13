@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { LIGHT_BLUE, BLUE } from "../../../../constants/colors";
+import { LIGHT_BLUE, BLUE, GRAY } from "../../../../constants/colors";
 
 export const Container = styled.View`
   align-items: center;
@@ -45,10 +45,10 @@ export const Text = styled.Text`
   width: 60px;
   text-align: center;
   font-size: 12px;
-
+  color: #67707a;
   ${props =>
     props.accent &&
     css`
       color: ${BLUE};
-    `}
+    `};
 `;

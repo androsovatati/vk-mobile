@@ -12,6 +12,12 @@ export const Wrapper = styled.View`
   background-color: white;
 `;
 
+export const Image = styled.Image`
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+`;
+
 export const AddPost = styled.TouchableOpacity`
   flex: 1;
   height: 100%;

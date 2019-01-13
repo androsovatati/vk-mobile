@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Wrapper, AddPost, AddPostText, Button } from "./NewPost.styles";
+import { Wrapper, Image, AddPost, AddPostText, Button } from "./NewPost.styles";
 import UserPlaceholder from "../../../components/UserPlaceholder";
 import { GRAY } from "../../../constants/colors";
 import Store from "../../../store";
@@ -13,7 +13,11 @@ class NewPost extends Component {
   render() {
     return (
       <Wrapper>
-        <UserPlaceholder size={30} />
+        {Store.user && Store.user.photo50 ? (
+          <Image source={{ uri: Store.user.photo50 }} />
+        ) : (
+          <UserPlaceholder size={30} />
+        )}
         <AddPost>
           <AddPostText>Что у Вас нового?</AddPostText>
         </AddPost>
