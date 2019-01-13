@@ -10,6 +10,7 @@ export const Header = styled.View`
 
 export const Source = styled.View`
   flex-direction: row;
+  flex: 1;
 `;
 
 export const Avatar = styled.Image`
@@ -19,7 +20,8 @@ export const Avatar = styled.Image`
 `;
 
 export const SourceInfo = styled.View`
-  padding-left: 10px;
+  flex: 1;
+  padding: 0 10px;
   justify-content: center;
 `;
 
@@ -30,6 +32,12 @@ export const Name = styled.Text`
 export const Date = styled.Text`
   color: ${GRAY};
   font-size: 12px;
+`;
+
+export const More = styled.TouchableOpacity`
+  padding: 0 5px 0 10px;
+  margin-right: 0;
+  margin-left: auto;
 `;
 
 export const TextContent = styled.Text`
