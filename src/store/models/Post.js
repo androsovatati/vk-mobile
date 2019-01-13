@@ -28,7 +28,7 @@ const Attachment = types.model({
 export const Post = types.model({
   type: types.string,
   sourceId: types.number,
-  date: types.Date,
+  date: types.number,
   postId: types.number,
   postType: types.string,
   text: types.string,

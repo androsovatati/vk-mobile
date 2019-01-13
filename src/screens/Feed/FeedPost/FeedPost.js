@@ -1,4 +1,6 @@
-import React from "react";
+import React, { PureComponent } from "react";
+import moment from "moment";
+import "moment/locale/ru";
 import Panel from "../../../components/Panel";
 import LikeControl from "../../../components/LikeControl";
 import CommentsControl from "../../../components/CommentsControl";
@@ -17,44 +19,52 @@ import {
   FooterItem
 } from "./FeedPost.styles";
 
-const FeedPost = props => {
-  const source = props.item.source;
-  return (
-    <Panel>
-      <Header>
-        <Source>
-          {!!source.photo50 ? (
-            <Avatar source={{ uri: source.photo50 }} />
-          ) : (
-            <UserPlaceholder size={40} />
-          )}
-          <SourceInfo>
-            <Name>
-              {source.name || `${source.firstName} ${source.lastName}`}
-            </Name>
-            <Date>{props.item.date.toString()}</Date>
-          </SourceInfo>
-        </Source>
-      </Header>
-      <TextContent>{props.item.text}</TextContent>
-      <Footer>
-        <FooterItem>
-          <LikeControl {...props.item.likes} />
-        </FooterItem>
-        <FooterItem>
-          <CommentsControl count={props.item.comments.count} />
-        </FooterItem>
-        <FooterItem>
-          <RepostControl {...props.item.reposts} />
-        </FooterItem>
-        {!!props.item.views && (
-          <FooterItem last={true}>
-            <ViewControl count={props.item.views.count} />
+class FeedPost extends PureComponent {
+  componentDidMount() {
+    moment.locale("ru");
+  }
+
+  render() {
+    const { item } = this.props;
+    const source = item.source;
+    const date = moment.unix(item.date).fromNow();
+    return (
+      <Panel>
+        <Header>
+          <Source>
+            {!!source.photo50 ? (
+              <Avatar source={{ uri: source.photo50 }} />
+            ) : (
+              <UserPlaceholder size={40} />
+            )}
+            <SourceInfo>
+              <Name>
+                {source.name || `${source.firstName} ${source.lastName}`}
+              </Name>
+              <Date>{date}</Date>
+            </SourceInfo>
+          </Source>
+        </Header>
+        <TextContent>{item.text}</TextContent>
+        <Footer>
+          <FooterItem>
+            <LikeControl {...item.likes} />
           </FooterItem>
-        )}
-      </Footer>
-    </Panel>
-  );
-};
+          <FooterItem>
+            <CommentsControl count={item.comments.count} />
+          </FooterItem>
+          <FooterItem>
+            <RepostControl {...item.reposts} />
+          </FooterItem>
+          {!!item.views && (
+            <FooterItem last={true}>
+              <ViewControl count={item.views.count} />
+            </FooterItem>
+          )}
+        </Footer>
+      </Panel>
+    );
+  }
+}
 
 export default FeedPost;
