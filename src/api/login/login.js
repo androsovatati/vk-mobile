@@ -1,7 +1,7 @@
 import axios from "axios";
+import Config from "react-native-config";
 import snakeCaseKeys from "snakecase-keys";
 import camelCaseKeys from "camelcase-keys";
-import { CLIENT_ID, CLIENT_SECRET } from "../../../keys";
 
 export const login = ({ username, password }) => {
   const params = snakeCaseKeys(
@@ -9,8 +9,8 @@ export const login = ({ username, password }) => {
       username,
       password,
       grantType: "password",
-      clientId: CLIENT_ID,
-      clientSecret: CLIENT_SECRET,
+      clientId: Config.CLIENT_ID,
+      clientSecret: Config.CLIENT_SECRET,
       scope: 8258
     },
     { deep: true }
