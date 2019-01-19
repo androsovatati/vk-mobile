@@ -8,6 +8,7 @@ import FeedPost from "./FeedPost";
 import { FlatList } from "react-native";
 import { observable, computed } from "mobx";
 import { observer } from "mobx-react";
+import FreshNewsButton from "./FreshNewsButton";
 
 @observer
 class Feed extends Component {
@@ -16,15 +17,33 @@ class Feed extends Component {
   }
 
   @observable isFetching = false;
+  @observable timer = null;
 
   componentDidMount() {
     this.refresh();
+    this.checkNewPosts();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
   }
 
   @computed
   get news() {
     return Store.postsData.map((item, i) => ({ ...item, key: `${i}` }));
   }
+
+  checkNewPosts = () => {
+    this.timer = setTimeout(() => {
+      Store.getFreshNewsFeed();
+      this.checkNewPosts();
+    }, 5000);
+  };
+
+  addNewPosts = () => {
+    Store.updateNewsFeed();
+    this.refs.list.scrollToOffset({ offset: 0, animated: true });
+  };
 
   refresh = async () => {
     this.isFetching = true;
@@ -41,6 +60,7 @@ class Feed extends Component {
       <Container>
         <FeedHeader navigation={this.props.navigation} />
         <FlatList
+          ref="list"
           data={this.news}
           ListHeaderComponent={
             <FeedListHeader>
@@ -53,6 +73,11 @@ class Feed extends Component {
           onRefresh={this.refresh}
           onEndReached={this.fetchMore}
         />
+        {!!Store.isNewPosts && (
+          <FreshNewsButton onPress={this.addNewPosts}>
+            Свежие новости
+          </FreshNewsButton>
+        )}
       </Container>
     );
   }

@@ -1,4 +1,4 @@
-import { types, flow } from "mobx-state-tree";
+import { types, flow, detach } from "mobx-state-tree";
 import { AsyncStorage } from "react-native";
 import { Profile } from "./models/Profile";
 import { Group } from "./models/Group";
@@ -38,18 +38,35 @@ const Store = types
       const newsfeed = yield fetchNewsFeed();
       self.newsfeed = {
         items: newsfeed.items,
+        newItems: [],
         nextFrom: newsfeed.nextFrom
       };
       self.setProfiles(newsfeed.profiles);
       self.setGroups(newsfeed.groups);
     }),
     getMoreNewsFeed: flow(function*() {
-      const newsfeed = yield fetchNewsFeed(self.newsfeed.nextFrom);
+      const newsfeed = yield fetchNewsFeed({
+        startFrom: self.newsfeed.nextFrom
+      });
       self.newsfeed.items.push(...newsfeed.items);
       self.newsfeed.nextFrom = newsfeed.nextFrom;
       self.setProfiles(newsfeed.profiles);
       self.setGroups(newsfeed.groups);
     }),
+    getFreshNewsFeed: flow(function*() {
+      const startTime = self.newsfeed.items[0].date;
+      const newsfeed = yield fetchNewsFeed({ startTime });
+      if (newsfeed.items.length > 1) {
+        self.newsfeed.newItems = newsfeed.items.slice(0, -1);
+        self.setProfiles(newsfeed.profiles);
+        self.setGroups(newsfeed.groups);
+      }
+    }),
+    updateNewsFeed() {
+      const newItems = [];
+      self.newsfeed.newItems.forEach(item => newItems.push(detach(item)));
+      self.newsfeed.items.unshift(...newItems);
+    },
     setProfiles: flow(function*(profiles) {
       const profilesWithoutPhoto = [];
       profiles.forEach(profile => {
@@ -94,6 +111,9 @@ const Store = types
           ? { ...post, source: self.profiles.get(post.sourceId) }
           : { ...post, source: self.groups.get(-post.sourceId) };
       });
+    },
+    get isNewPosts() {
+      return self.newsfeed && self.newsfeed.newItems.length;
     }
   }))
   .create();
